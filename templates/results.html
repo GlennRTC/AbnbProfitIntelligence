@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculation Results</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .graph { margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculation Results</h1>
+
+        <h2>Summary</h2>
+        <p><strong>Monthly Income:</strong> ${{ monthly_income }} ({{ monthly_income_cop }} COP)</p>
+        <p><strong>Monthly Profit:</strong> ${{ monthly_profit }} ({{ monthly_profit_cop }} COP)</p>
+        <p><strong>Annual Profit:</strong> ${{ annual_profit }} ({{ annual_profit_cop }} COP)</p>
+        <p><strong>Annual ROI:</strong> {{ roi }}%</p>
+        <p><strong>Exchange Rate (USD to COP):</strong> {{ exchange_rate }}</p>
+
+        <h2>Detailed Report</h2>
+        <table>
+            <tr>
+                <th>Metric</th>
+                <th>Value (USD)</th>
+                <th>Value (COP)</th>
+            </tr>
+            <tr>
+                <td>Monthly Income</td>
+                <td>${{ monthly_income }}</td>
+                <td>{{ monthly_income_cop }} COP</td>
+            </tr>
+            <tr>
+                <td>Monthly Profit</td>
+                <td>${{ monthly_profit }}</td>
+                <td>{{ monthly_profit_cop }}  COP</td>
+            </tr>
+            <tr>
+                <td>Annual Profit</td>
+                <td>${{ annual_profit }}</td>
+                <td>{{ annual_profit_cop }} COP</td>
+            </tr>
+            <tr>
+                <td>Annual ROI</td>
+                <td colspan="2">{{ roi }}%</td>
+            </tr>
+        </table>
+
+        <h2>Monthly Profit Trend</h2>
+        <div class="graph">
+            <img src="data:image/png;base64,{{ monthly_profit_trend }}" />
+        </div>
+
+        <h2>ROI Over Time</h2>
+        <div class="graph">
+            <img src="data:image/png;base64,{{ roi_over_time }}" />
+        </div>
+
+        <h2>Break-even Analysis</h2>
+        <div class="graph">
+            <img src="data:image/png;base64,{{ break_even_analysis }}" />
+        </div>
+
+        <h2>Occupancy vs. Profit</h2>
+        <div class="graph">
+            <img src="data:image/png;base64,{{ occupancy_vs_profit }}" />
+        </div>
+
+        <h2>Seasonal Trends</h2>
+        <div class="graph">
+            <img src="data:image/png;base64,{{ seasonal_trends_graph }}" alt="Seasonal Trends Graph" />
+        </div>
+
+        <h2>Revenue and Occupancy Rate Trend (Sample Data)</h2>
+        <div class="graph">
+            <canvas id="revenueTrend"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('revenueTrend').getContext('2d');
+        const revenueTrendChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [
+                    {
+                        label: 'Monthly Revenue (USD)',
+                        data: [1500, 1800, 2000, 2200, 2500, 3000, 3200, 2800, 2600, 2400, 2100, 1900],
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        fill: false
+                    },
+                    {
+                        label: 'Occupancy Rate (%)',
+                        data: [55, 60, 65, 70, 75, 80, 85, 82, 75, 70, 65, 60],
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' },
+                },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

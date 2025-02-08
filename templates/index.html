@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Airbnb Profitability Calculator</title>
+</head>
+<body>
+    <h1>Airbnb Profitability Calculator</h1>
+    <form method="post">
+        <label for="purchase_price">Purchase Price (USD):</label>
+        <input type="number" id="purchase_price" name="purchase_price" required><br><br>
+
+        <label for="nightly_rate">Nightly Rate (USD):</label>
+        <input type="number" id="nightly_rate" name="nightly_rate" value="35"><br><br>
+
+        <label for="occupancy_rate">Occupancy Rate (%):</label>
+        <input type="number" id="occupancy_rate" step="0.1" name="occupancy_rate" value="47"><br><br>
+
+        <label for="monthly_expenses">Monthly Expenses (USD):</label>
+        <input type="number" id="monthly_expenses" name="monthly_expenses" required><br><br>
+
+        <label for="exchange_rate">Exchange Rate (USD to COP):</label>
+        <input type="number" id="exchange_rate" name="exchange_rate" value="{{ exchange_rate }}"><br><br>
+
+        <input type="submit" value="Calculate">
+    </form>
+
+    <h2>Seasonal Trends</h2>
+    <img src="data:image/png;base64,{{ seasonal_trends_graph }}" alt="Seasonal Trends Graph">
+</body>
+</html>
