@@ -85,7 +85,7 @@ python app.py
 
 ## 📜 License
 
-[Your License Here] (Keep it legal, folks! 😉)
+(Keep it legal, folks! 😉)
 
 ## 💖 Credits
 
